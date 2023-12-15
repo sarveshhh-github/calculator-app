@@ -1,15 +1,8 @@
 import {
   View,
-  Text,
   SafeAreaView,
   TextInput,
-  KeyboardAvoidingView,
-  Button,
-  Touchable,
-  TouchableOpacity,
-  TouchableHighlight,
   StyleSheet,
-  Platform,
 } from 'react-native';
 import CustomBlackButton from './src/Buttons/CustomBlackButton';
 import CustomGreyButton from './src/Buttons/CustomGreyButton';
@@ -197,7 +190,7 @@ const App2 = () => {
         {/* black */}
         <CustomBlackButton
           value={'0'}
-          Width={{ width: 200 }}
+          Width={{ width: 150 }}
           onPress={() => handlePressNumbers({ digit: '0' })}
           textColor={{ color: 'white', textAlign: 'left' }}
         />
@@ -215,6 +208,12 @@ const App2 = () => {
     </SafeAreaView>
   );
 };
+
+
+export default App2;
+
+
+
 
 const styles = StyleSheet.create({
   mainviewContainer: {
@@ -248,5 +247,3 @@ const styles = StyleSheet.create({
     alignContent: 'space-around',
   },
 });
-
-export default App2;

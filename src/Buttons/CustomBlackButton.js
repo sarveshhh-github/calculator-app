@@ -17,8 +17,8 @@ export default CustomBlackButton
 
 const styles = StyleSheet.create({
     customblackbtn: {
-        height: 90,
-        width: 90,
+        height: 80,
+        width: 80,
         borderRadius: 50,
         alignItems: 'center',
         justifyContent: 'center',
