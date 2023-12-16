@@ -8,7 +8,8 @@ import React, { useState } from 'react';
 import CustomBtn from './src/Buttons/CustomBtn';
 
 const App = () => {
-  const [operator, setOperator] = useState(null);
+
+  var [operator, setOperator] = useState(null);
   var [initialValue, setInitialValue] = useState('0');
   var [secondValue, setSecondValue] = useState('0');
 
