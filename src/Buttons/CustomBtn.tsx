@@ -6,11 +6,11 @@ var ButtonDimensions = screenWidth/6
 var ButtonMargin = ButtonDimensions/6
 
 type CustomBtnProps = {
-    Title:string,
-    onPress: () => void,
-    buttonBgColor:string,
-    color:string,
-    Width:number
+    Title?:string,
+    onPress?: () => void,
+    buttonBgColor?:string,
+    color?:string,
+    Width?:number
 }
 const CustomBtn = ({Title,onPress,buttonBgColor,color,Width}:CustomBtnProps) => {
     const styles = StyleSheet.create({
