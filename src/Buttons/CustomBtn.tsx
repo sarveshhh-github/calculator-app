@@ -15,8 +15,8 @@ type CustomBtnProps = {
 const CustomBtn = ({Title,onPress,buttonBgColor,color,Width}:CustomBtnProps) => {
     const styles = StyleSheet.create({
         btnStyles: {
-            height: ButtonDimensions,
-            width: Width? Width : ButtonDimensions,
+            height: ButtonDimensions+10,
+            width: Width? Width : ButtonDimensions+10,
             backgroundColor: buttonBgColor,
             alignItems: "center",
             justifyContent: "center",
