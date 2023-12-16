@@ -4,12 +4,10 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-import CustomBlackButton from './src/Buttons/CustomBlackButton';
-import CustomGreyButton from './src/Buttons/CustomGreyButton';
-import CustomOrangeButton from './CustomOrangeButton';
 import React, { useState } from 'react';
+import CustomBtn from './src/Buttons/CustomBtn';
 
-const App2 = () => {
+const App = () => {
   const [operator, setOperator] = useState(null);
   var [initialValue, setInitialValue] = useState('0');
   var [secondValue, setSecondValue] = useState('0');
@@ -82,9 +80,6 @@ const App2 = () => {
       // : setSecondValue(initialValue * 10 + digit);
     }
   };
-
-
-
   const ACFunction = () => {
     setInitialValue('0');
     setSecondValue('0');
@@ -121,88 +116,82 @@ const App2 = () => {
         />
       </View>
       <View style={styles.bottomArea}>
-        {/* grey */}
-        <CustomGreyButton value={'AC'} onPress={ACFunction} />
-        <CustomGreyButton value={'+/-'} onPress={plusOrMinus} />
-        <CustomGreyButton value={'%'} onPress={percentageFunction} />
+        <CustomBtn color={"black"} Title={"AC"} buttonBgColor={"grey"} onPress={ACFunction} />
+        <CustomBtn color={"black"} Title={"+/-"} buttonBgColor={"grey"} onPress={plusOrMinus} />
+        <CustomBtn color={"black"} Title={"%"} buttonBgColor={"grey"} onPress={percentageFunction} />
+
+        <CustomBtn Title={"/"} color={"white"} buttonBgColor="#FFA500"
+          onPress={
+            () => {
+              if (initialValue && secondValue && operator) {
+                setOperator('/')
+                handleAnswer()
+              }
+              else {
+
+                handleOperator((opr = '/'))
+              }
+
+            }
+          }
+        />
+        <CustomBtn color={"white"} Title={"7"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '7' })} />
+        <CustomBtn color={"white"} Title={"8"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '8' })} />
+        <CustomBtn color={"white"} Title={"9"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '9' })} />
+
+        {/* black */}
+
         {/* orange */}
-        <CustomOrangeButton
-          value={'/'}
-          textColor={{ color: 'white' }}
-          onPress={() => handleOperator((opr = '/'))}
+        <CustomBtn
+          Title={"x"}
+          color={"white"}
+          buttonBgColor="#FFA500"
+          onPress={
+            () => handleOperator((opr = '*'))
+          }
         />
         {/* black */}
-        <CustomBlackButton
-          value={'7'}
-          onPress={() => handlePressNumbers({ digit: '7' })}
-        />
-        <CustomBlackButton
-          value={'8'}
-          onPress={() => handlePressNumbers({ digit: '8' })}
-        />
-        <CustomBlackButton
-          value={'9'}
-          onPress={() => handlePressNumbers({ digit: '9' })}
-        />
+        <CustomBtn color={"white"} Title={"4"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '4' })} />
+        <CustomBtn color={"white"} Title={"5"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '5' })} />
+        <CustomBtn color={"white"} Title={"6"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '6' })} />
+
         {/* orange */}
-        <CustomOrangeButton
-          value={'x'}
-          onPress={() => handleOperator((opr = '*'))}
-        />
-        {/* black */}
-        <CustomBlackButton
-          value={'4'}
-          onPress={() => handlePressNumbers({ digit: '4' })}
-        />
-        <CustomBlackButton
-          value={'5'}
-          onPress={() => handlePressNumbers({ digit: '5' })}
-        />
-        <CustomBlackButton
-          value={'6'}
-          onPress={() => handlePressNumbers({ digit: '6' })}
-        />
-        {/* orange */}
-        <CustomOrangeButton
-          value={'-'}
-          onPress={() => handleOperator((opr = '-'))}
+        <CustomBtn
+          Title={"-"}
+          color={"white"}
+          buttonBgColor="#FFA500"
+          onPress={
+            () => handleOperator((opr = '-'))
+          }
         />
 
         {/* black */}
-        <CustomBlackButton
-          value={'1'}
-          onPress={() => handlePressNumbers({ digit: '1' })}
-        />
-        <CustomBlackButton
-          value={'2'}
-          onPress={() => handlePressNumbers({ digit: '2' })}
-        />
-        <CustomBlackButton
-          value={'3'}
-          onPress={() => handlePressNumbers({ digit: '3' })}
-        />
+        <CustomBtn color={"white"} Title={"1"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '1' })} />
+        <CustomBtn color={"white"} Title={"2"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '2' })} />
+        <CustomBtn color={"white"} Title={"3"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '3' })} />
+
         {/* orange */}
-        <CustomOrangeButton
-          value={'+'}
-          onPress={() => handleOperator((opr = '+'))}
+        <CustomBtn
+          Title={"x"}
+          color={"white"}
+          buttonBgColor="#FFA500"
+          onPress={
+            () => handleOperator((opr = '+'))
+          }
         />
 
         {/* black */}
-        <CustomBlackButton
-          value={'0'}
-          Width={{ width: 150 }}
-          onPress={() => handlePressNumbers({ digit: '0' })}
-          textColor={{ color: 'white', textAlign: 'left' }}
-        />
-        <CustomBlackButton
-          value={'.'}
-          textColor={{ color: 'white' }}
-          onPress={() => handlePressNumbers({ digit: '.' })}
-        />
-        <CustomOrangeButton
-          value={'='}
-          textColor={{ color: 'white' }}
-          onPress={() => handleAnswer()}
+        <CustomBtn color={"white"} Title={"0"} buttonBgColor={"#333333"} Width={"42%"} onPress={() => handlePressNumbers({ digit: '0' })} />
+
+        <CustomBtn color={"white"} Title={"."} buttonBgColor={"#333333"} onPress={() => handlePressNumbers({ digit: '.' })} />
+
+
+        <CustomBtn
+          Title={"="}
+          color={"white"}
+          buttonBgColor="#FFA500"
+          onPress={
+            handleAnswer}
         />
       </View>
     </SafeAreaView>
@@ -210,7 +199,7 @@ const App2 = () => {
 };
 
 
-export default App2;
+export default App;
 
 
 
