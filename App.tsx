@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import CustomBtn from './src/Buttons/CustomBtn';
+import CustomBtn from './CustomBtn';
 
 const App = () => {
 
@@ -102,20 +102,20 @@ const App = () => {
       // : setSecondValue(initialValue * 10 + digit);
     }
   };
-  const ACFunction = () => {
+
+  const clearValue = () => {
+
     if (secondValue !== "0") {
       setSecondValue('0');
-
     }
     else {
       setInitialValue('0');
-      setSecondValue('0');
       setOperator(undefined);
 
     }
   };
 
-  function percentageFunction() {
+  const percentageFunction = () => {
     if (secondValue == "0") {
       var newValue = parseFloat(initialValue) / 100
       setInitialValue(newValue.toString())
@@ -126,7 +126,7 @@ const App = () => {
     }
   }
 
-  function plusOrMinus() {
+  const plusOrMinus = () => {
     secondValue == '0' ?
       setInitialValue(parseFloat("-" + initialValue).toString())
       :
@@ -153,7 +153,7 @@ const App = () => {
           color={"black"}
           Title={"AC"}
           buttonBgColor={"grey"}
-          onPress={ACFunction} />
+          onPress={clearValue} />
 
         <CustomBtn
           color={"black"}
