@@ -116,12 +116,14 @@ const App = () => {
   };
 
   function percentageFunction() {
-    /// if the second value is given then the percentage will be initialvalue x secondvalue / 100
-    // if there is no second value initial / 100
-
-    secondValue !== '0'
-      ? setSecondValue(parseFloat((initialValue * secondValue) / 100))
-      : setSecondValue(parseFloat(initialValue / 100));
+    if (secondValue == "0") {
+      var newValue = parseFloat(initialValue) / 100
+      setInitialValue(newValue.toString())
+    }
+    else {
+      var newValue = parseFloat(initialValue) * parseFloat(secondValue) / 100
+      setSecondValue(newValue.toString())
+    }
   }
 
   function plusOrMinus() {
@@ -164,7 +166,7 @@ const App = () => {
           Title={"%"}
           buttonBgColor={"grey"}
           onPress={percentageFunction}
-          />
+        />
 
         <CustomBtn
           Title={"/"}
