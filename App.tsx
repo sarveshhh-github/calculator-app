@@ -14,26 +14,27 @@ const App = () => {
   var [secondValue, setSecondValue] = useState<string>('0');
 
 
-useEffect(
-  () => {
-    console.log(operator);
-console.log(initialValue);
-console.log(secondValue);
+  useEffect(
+    () => {
+      console.log(operator);
+      console.log(initialValue);
+      console.log(secondValue);
 
-  },
-  [operator,initialValue,secondValue]
-)
+    },
+    [operator, initialValue, secondValue]
+  )
 
-const handleOperator = (opr:string) =>{
-  if(initialValue && secondValue && operator) {
-    handleAnswer()
-    setOperator(opr);
+  const handleOperator = (opr: string) => {
+    if (initialValue && secondValue && operator) {
+      handleAnswer()
+      setOperator(opr);
+    }
+    else {
+      setOperator(opr);
+
+    }
   }
-  else{
-    setOperator(opr);
 
-  }
-}
 
   const handleAnswer = () => {
     switch (operator) {
@@ -49,8 +50,8 @@ const handleOperator = (opr:string) =>{
         break;
       }
       case '-': {
-        var Answer = parseFloat(initialValue) -parseFloat (secondValue);
-       var FloatNum = Answer.toString().split('.')[1];
+        var Answer = parseFloat(initialValue) - parseFloat(secondValue);
+        var FloatNum = Answer.toString().split('.')[1];
         if (FloatNum == undefined) {
           setInitialValue(Answer.toString());
         } else {
@@ -59,7 +60,7 @@ const handleOperator = (opr:string) =>{
         break;
       }
       case '*': {
-        var Answer =parseFloat(initialValue)  * parseFloat(secondValue);
+        var Answer = parseFloat(initialValue) * parseFloat(secondValue);
         var FloatNum = Answer.toString().split('.')[1];
         if (FloatNum == undefined) {
           setInitialValue(Answer.toString());
@@ -69,12 +70,12 @@ const handleOperator = (opr:string) =>{
         break;
       }
       case '/': {
-        var Answer = parseFloat(initialValue) /parseFloat(secondValue) ;
+        var Answer = parseFloat(initialValue) / parseFloat(secondValue);
         var FloatNum = Answer.toString().split('.')[1];
         if (FloatNum == undefined) {
           setInitialValue(Answer.toString());
         } else {
-          setInitialValue(Answer.toFixed(2).toString);
+          setInitialValue(Answer.toFixed(2).toString());
         }
         break;
       }
@@ -85,7 +86,7 @@ const handleOperator = (opr:string) =>{
   };
 
 
-  const handlePressNumbers = (digit:any) => {
+  const handlePressNumbers = (digit: any) => {
     if (operator === undefined) {
       initialValue == '0'
         ? setInitialValue(digit)
@@ -102,10 +103,26 @@ const handleOperator = (opr:string) =>{
     }
   };
   const ACFunction = () => {
-    setInitialValue('0');
-    setSecondValue('0');
-    setOperator(undefined);
+    if (secondValue !== "0") {
+      setSecondValue('0');
+
+    }
+    else {
+      setInitialValue('0');
+      setSecondValue('0');
+      setOperator(undefined);
+
+    }
   };
+
+  function percentageFunction() {
+    /// if the second value is given then the percentage will be initialvalue x secondvalue / 100
+    // if there is no second value initial / 100
+
+    secondValue !== '0'
+      ? setSecondValue(parseFloat((initialValue * secondValue) / 100))
+      : setSecondValue(parseFloat(initialValue / 100));
+  }
 
   function plusOrMinus() {
     secondValue == '0' ?
@@ -130,21 +147,48 @@ const handleOperator = (opr:string) =>{
         />
       </View>
       <View style={styles.bottomArea}>
-        <CustomBtn color={"black"} Title={"AC"} buttonBgColor={"grey"} onPress={ACFunction} />
-        <CustomBtn color={"black"} Title={"+/-"} buttonBgColor={"grey"} onPress={plusOrMinus} />
-        <CustomBtn color={"black"} Title={"%"} buttonBgColor={"grey"} />
+        <CustomBtn
+          color={"black"}
+          Title={"AC"}
+          buttonBgColor={"grey"}
+          onPress={ACFunction} />
 
-        <CustomBtn Title={"/"} color={"white"} buttonBgColor="#FFA500"
+        <CustomBtn
+          color={"black"}
+          Title={"+/-"}
+          buttonBgColor={"grey"}
+          onPress={plusOrMinus} />
+
+        <CustomBtn
+          color={"black"}
+          Title={"%"}
+          buttonBgColor={"grey"} />
+
+        <CustomBtn
+          Title={"/"}
+          color={"white"}
+          buttonBgColor="#FFA500"
           onPress={() =>
-          handleOperator('/')}
+            handleOperator('/')}
         />
-        <CustomBtn color={"white"} Title={"7"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers( '7')} />
-        <CustomBtn color={"white"} Title={"8"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers( '8' )} />
-        <CustomBtn color={"white"} Title={"9"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers( '9')} />
+        <CustomBtn
+          color={"white"}
+          Title={"7"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('7')} />
 
-        {/* black */}
+        <CustomBtn
+          color={"white"}
+          Title={"8"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('8')} />
 
-        {/* orange */}
+        <CustomBtn
+          color={"white"}
+          Title={"9"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('9')} />
+
         <CustomBtn
           Title={"x"}
           color={"white"}
@@ -153,12 +197,24 @@ const handleOperator = (opr:string) =>{
             () => handleOperator('*')
           }
         />
-        {/* black */}
-        <CustomBtn color={"white"} Title={"4"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers('4')} />
-        <CustomBtn color={"white"} Title={"5"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers('5')} />
-        <CustomBtn color={"white"} Title={"6"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers('6')} />
+        <CustomBtn
+          color={"white"}
+          Title={"4"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('4')} />
 
-        {/* orange */}
+        <CustomBtn
+          color={"white"}
+          Title={"5"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('5')} />
+
+        <CustomBtn
+          color={"white"}
+          Title={"6"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('6')} />
+
         <CustomBtn
           Title={"-"}
           color={"white"}
@@ -167,10 +223,24 @@ const handleOperator = (opr:string) =>{
             () => handleOperator('-')
           }
         />
+        <CustomBtn
+          color={"white"}
+          Title={"1"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('1')} />
 
-        <CustomBtn color={"white"} Title={"1"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers('1')} />
-        <CustomBtn color={"white"} Title={"2"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers('2')} />
-        <CustomBtn color={"white"} Title={"3"} buttonBgColor={"#333333"} onPress={() => handlePressNumbers('3')} />
+        <CustomBtn
+          color={"white"}
+          Title={"2"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('2')} />
+
+        <CustomBtn
+          color={"white"}
+          Title={"3"}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('3')} />
+
         <CustomBtn
           Title={"+"}
           color={"white"}
@@ -179,12 +249,18 @@ const handleOperator = (opr:string) =>{
             () => handleOperator('+')
           }
         />
+        <CustomBtn
+          color={"white"}
+          Title={"0"}
+          buttonBgColor={"#333333"}
+          Width={"42%"}
+          onPress={() => handlePressNumbers('0')} />
 
-        {/* black */}
-        <CustomBtn color={"white"} Title={"0"} buttonBgColor={"#333333"} Width={"42%"} onPress={() => handlePressNumbers('0')} />
-
-        <CustomBtn color={"white"} Title={"."} buttonBgColor={"#333333"} onPress={() => handlePressNumbers('.')} />
-
+        <CustomBtn
+          color={"white"}
+          Title={"."}
+          buttonBgColor={"#333333"}
+          onPress={() => handlePressNumbers('.')} />
 
         <CustomBtn
           Title={"="}
@@ -209,19 +285,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'black', // change it after it is done
     top: 0,
     justifyContent: 'flex-end',
-    padding:10
+    padding: 10
   },
   textInput: {
     margin: 0,
     paddingRight: 10,
     padding: 0,
-    fontSize: 80,
+    fontSize: 70,
     color: 'white',
     width: '100%',
     textAlign: 'right',
   },
-  bottomArea:{
-    flex:1 ,
+  bottomArea: {
+    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
