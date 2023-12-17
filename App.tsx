@@ -162,7 +162,9 @@ const App = () => {
         <CustomBtn
           color={"black"}
           Title={"%"}
-          buttonBgColor={"grey"} />
+          buttonBgColor={"grey"}
+          onPress={percentageFunction}
+          />
 
         <CustomBtn
           Title={"/"}
