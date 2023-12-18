@@ -3,5 +3,5 @@
 ## screenshots
 
 
-![Alt text](<Simulator Screenshot - iPhone SE (3rd generation) - 2023-12-18 at 12.38.52.png>)
-![Alt text](<Simulator Screenshot - iPhone SE (3rd generation) - 2023-12-18 at 12.38.59.png>)
+# ![image1](<Simulator Screenshot - iPhone SE (3rd generation) - 2023-12-18 at 12.38.52.png>)
+# ![image2](<Simulator Screenshot - iPhone SE (3rd generation) - 2023-12-18 at 12.38.59.png>)
