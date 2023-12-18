@@ -12,7 +12,7 @@ const App = () => {
   var [operator, setOperator] = useState<string | undefined>(undefined);
   var [initialValue, setInitialValue] = useState<string>('0');
   var [secondValue, setSecondValue] = useState<string>('0');
-var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
+  var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
 
   const handleOperator = (opr: string) => {
     if (initialValue && secondValue && operator) {
@@ -27,48 +27,48 @@ var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
 
 
   const handleAnswer = () => {
-  switch (operator) {
-    case '+': {
-      var Answer = parseFloat(initialValue) + parseFloat(secondValue);
-      var FloatNum = Answer.toString().split('.')[1];
-      if (FloatNum == undefined) {
-        setInitialValue(Answer.toString());
-      } else {
-        setInitialValue(Answer.toFixed(2).toString());
+    switch (operator) {
+      case '+': {
+        var Answer = parseFloat(initialValue) + parseFloat(secondValue);
+        var FloatNum = Answer.toString().split('.')[1];
+        if (FloatNum == undefined) {
+          setInitialValue(Answer.toString());
+        } else {
+          setInitialValue(Answer.toFixed(2).toString());
+        }
+        break;
       }
-      break;
-    }
-    case '-': {
-      var Answer = parseFloat(initialValue) - parseFloat(secondValue);
-      var FloatNum = Answer.toString().split('.')[1];
-      if (FloatNum == undefined) {
-        setInitialValue(Answer.toString());
-      } else {
-        setInitialValue(Answer.toFixed(2).toString());
+      case '-': {
+        var Answer = parseFloat(initialValue) - parseFloat(secondValue);
+        var FloatNum = Answer.toString().split('.')[1];
+        if (FloatNum == undefined) {
+          setInitialValue(Answer.toString());
+        } else {
+          setInitialValue(Answer.toFixed(2).toString());
+        }
+        break;
       }
-      break;
-    }
-    case '*': {
-      var Answer = parseFloat(initialValue) * parseFloat(secondValue);
-      var FloatNum = Answer.toString().split('.')[1];
-      if (FloatNum == undefined) {
-        setInitialValue(Answer.toString());
-      } else {
-        setInitialValue(Answer.toFixed(2).toString());
+      case '*': {
+        var Answer = parseFloat(initialValue) * parseFloat(secondValue);
+        var FloatNum = Answer.toString().split('.')[1];
+        if (FloatNum == undefined) {
+          setInitialValue(Answer.toString());
+        } else {
+          setInitialValue(Answer.toFixed(2).toString());
+        }
+        break;
       }
-      break;
-    }
-    case '/': {
-      var Answer = parseFloat(initialValue) / parseFloat(secondValue);
-      var FloatNum = Answer.toString().split('.')[1];
-      if (FloatNum == undefined) {
-        setInitialValue(Answer.toString());
-      } else {
-        setInitialValue(Answer.toFixed(2).toString());
+      case '/': {
+        var Answer = parseFloat(initialValue) / parseFloat(secondValue);
+        var FloatNum = Answer.toString().split('.')[1];
+        if (FloatNum == undefined) {
+          setInitialValue(Answer.toString());
+        } else {
+          setInitialValue(Answer.toFixed(2).toString());
+        }
+        break;
       }
-      break;
     }
-}
     setSecondValue('0');
     setOperator(undefined);
   };
@@ -101,7 +101,7 @@ var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
       setInitialValue('0');
       setOperator(undefined);
     }
-setBtnFocus(undefined)
+    setBtnFocus(undefined)
 
   };
 
@@ -160,14 +160,14 @@ setBtnFocus(undefined)
 
         <CustomBtn
           Title={"/"}
-          color={btnFocus==1?"#FFa500" :"white"}
-          buttonBgColor={btnFocus==1? "white" : "#FFA500"}
-          onPress={() =>{
+          color={btnFocus == 1 ? "#FFa500" : "white"}
+          buttonBgColor={btnFocus == 1 ? "white" : "#FFA500"}
+          onPress={() => {
             handleOperator('/')
             setBtnFocus(1)
 
           }
-            }
+          }
         />
         <CustomBtn
           color={"white"}
@@ -189,13 +189,13 @@ setBtnFocus(undefined)
 
         <CustomBtn
           Title={"x"}
-          color={btnFocus==2?"#FFa500" :"white"}
-          buttonBgColor={btnFocus==2? "white" : "#FFA500"}
-         onPress={
-            () =>{
+          color={btnFocus == 2 ? "#FFa500" : "white"}
+          buttonBgColor={btnFocus == 2 ? "white" : "#FFA500"}
+          onPress={
+            () => {
               handleOperator('*')
-          setBtnFocus(2)
-            } }
+              setBtnFocus(2)
+            }}
         />
         <CustomBtn
           color={"white"}
@@ -217,11 +217,13 @@ setBtnFocus(undefined)
 
         <CustomBtn
           Title={"-"}
-          color={btnFocus==3?"#FFa500" :"white"}
-          buttonBgColor={btnFocus==3? "white" : "#FFA500"}
-         onPress={
-            () => {handleOperator('-')
-          setBtnFocus(3)}
+          color={btnFocus == 3 ? "#FFa500" : "white"}
+          buttonBgColor={btnFocus == 3 ? "white" : "#FFA500"}
+          onPress={
+            () => {
+              handleOperator('-')
+              setBtnFocus(3)
+            }
           }
         />
         <CustomBtn
@@ -244,12 +246,13 @@ setBtnFocus(undefined)
 
         <CustomBtn
           Title={"+"}
-          color={btnFocus==4?"#FFa500" :"white"}
-          buttonBgColor={btnFocus==4? "white" : "#FFA500"}
+          color={btnFocus == 4 ? "#FFa500" : "white"}
+          buttonBgColor={btnFocus == 4 ? "white" : "#FFA500"}
           onPress={
-            () => {handleOperator('+')
-          setBtnFocus(4)
-          }
+            () => {
+              handleOperator('+')
+              setBtnFocus(4)
+            }
           }
         />
         <CustomBtn
@@ -267,13 +270,13 @@ setBtnFocus(undefined)
 
         <CustomBtn
           Title={"="}
-          color={btnFocus==5?"#FFa500" :"white"}
-          buttonBgColor={btnFocus==5? "white" : "#FFA500"}
-            onPress={() => {
-             handleAnswer()
-              setBtnFocus(5)
+          color={btnFocus == 5 ? "#FFa500" : "white"}
+          buttonBgColor={btnFocus == 5 ? "white" : "#FFA500"}
+          onPress={() => {
+            handleAnswer()
+            setBtnFocus(5)
 
-            }
+          }
           }
         />
       </View>
