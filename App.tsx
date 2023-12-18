@@ -14,16 +14,6 @@ const App = () => {
   var [secondValue, setSecondValue] = useState<string>('0');
 var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
 
-  useEffect(
-    () => {
-      console.log(operator);
-      console.log(initialValue);
-      console.log(secondValue);
-
-    },
-    [operator, initialValue, secondValue]
-  )
-
   const handleOperator = (opr: string) => {
     if (initialValue && secondValue && operator) {
       handleAnswer()
