@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import CustomBtn from './src/Buttons/CustomBtn';
+import CustomBtn from './CustomBtn';
 
 const App = () => {
 
