@@ -68,10 +68,7 @@ var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
       }
       break;
     }
-
-
 }
-
     setSecondValue('0');
     setOperator(undefined);
   };
@@ -103,8 +100,9 @@ var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
     else {
       setInitialValue('0');
       setOperator(undefined);
-setBtnFocus(undefined)
     }
+setBtnFocus(undefined)
+
   };
 
   const percentageFunction = () => {
