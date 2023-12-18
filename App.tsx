@@ -93,20 +93,21 @@ var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
       // : setSecondValue(initialValue * 10 + digit);
     }
   };
-  const ACFunction = () => {
+
+  const clearValue = () => {
+
     if (secondValue !== "0") {
       setSecondValue('0');
-setBtnFocus(undefined)
+
     }
     else {
       setInitialValue('0');
-      setSecondValue('0');
       setOperator(undefined);
 setBtnFocus(undefined)
     }
   };
 
-  function percentageFunction() {
+  const percentageFunction = () => {
     if (secondValue == "0") {
       var newValue = parseFloat(initialValue) / 100
       setInitialValue(newValue.toString())
@@ -117,7 +118,7 @@ setBtnFocus(undefined)
     }
   }
 
-  function plusOrMinus() {
+  const plusOrMinus = () => {
     secondValue == '0' ?
       setInitialValue((-parseFloat(initialValue)).toString())
       :
@@ -144,7 +145,7 @@ setBtnFocus(undefined)
           color={"black"}
           Title={"AC"}
           buttonBgColor={"grey"}
-          onPress={ACFunction} />
+          onPress={clearValue} />
 
         <CustomBtn
           color={"black"}
