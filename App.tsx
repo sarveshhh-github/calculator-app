@@ -37,7 +37,6 @@ var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
 
 
   const handleAnswer = () => {
-
   switch (operator) {
     case '+': {
       var Answer = parseFloat(initialValue) + parseFloat(secondValue);
@@ -130,9 +129,9 @@ setBtnFocus(undefined)
 
   function plusOrMinus() {
     secondValue == '0' ?
-      setInitialValue(parseFloat("-" + initialValue).toString())
+      setInitialValue((-parseFloat(initialValue)).toString())
       :
-      setSecondValue(parseFloat("-" + secondValue).toString())
+      setSecondValue((-parseFloat(secondValue)).toString())
   }
 
   return (
@@ -282,7 +281,7 @@ setBtnFocus(undefined)
           color={btnFocus==5?"#FFa500" :"white"}
           buttonBgColor={btnFocus==5? "white" : "#FFA500"}
             onPress={() => {
-              handleAnswer()
+             handleAnswer()
               setBtnFocus(5)
 
             }
