@@ -12,7 +12,7 @@ const App = () => {
   var [operator, setOperator] = useState<string | undefined>(undefined);
   var [initialValue, setInitialValue] = useState<string>('0');
   var [secondValue, setSecondValue] = useState<string>('0');
-
+var [btnFocus, setBtnFocus] = useState<undefined | number>(undefined)
 
   useEffect(
     () => {
@@ -37,49 +37,51 @@ const App = () => {
 
 
   const handleAnswer = () => {
-    switch (operator) {
-      case '+': {
-        var Answer = parseFloat(initialValue) + parseFloat(secondValue);
-        var FloatNum = Answer.toString().split('.')[1];
-        if (FloatNum == undefined) {
-          setInitialValue(Answer.toString());
-        } else {
-          setInitialValue(Answer.toFixed(2).toString());
-          // setInitialValue(DivTempValue.toFixed(2));
-        }
-        break;
+
+  switch (operator) {
+    case '+': {
+      var Answer = parseFloat(initialValue) + parseFloat(secondValue);
+      var FloatNum = Answer.toString().split('.')[1];
+      if (FloatNum == undefined) {
+        setInitialValue(Answer.toString());
+      } else {
+        setInitialValue(Answer.toFixed(2).toString());
       }
-      case '-': {
-        var Answer = parseFloat(initialValue) - parseFloat(secondValue);
-        var FloatNum = Answer.toString().split('.')[1];
-        if (FloatNum == undefined) {
-          setInitialValue(Answer.toString());
-        } else {
-          setInitialValue(Answer.toFixed(2).toString());
-        }
-        break;
-      }
-      case '*': {
-        var Answer = parseFloat(initialValue) * parseFloat(secondValue);
-        var FloatNum = Answer.toString().split('.')[1];
-        if (FloatNum == undefined) {
-          setInitialValue(Answer.toString());
-        } else {
-          setInitialValue(Answer.toFixed(2).toString());
-        }
-        break;
-      }
-      case '/': {
-        var Answer = parseFloat(initialValue) / parseFloat(secondValue);
-        var FloatNum = Answer.toString().split('.')[1];
-        if (FloatNum == undefined) {
-          setInitialValue(Answer.toString());
-        } else {
-          setInitialValue(Answer.toFixed(2).toString());
-        }
-        break;
-      }
+      break;
     }
+    case '-': {
+      var Answer = parseFloat(initialValue) - parseFloat(secondValue);
+      var FloatNum = Answer.toString().split('.')[1];
+      if (FloatNum == undefined) {
+        setInitialValue(Answer.toString());
+      } else {
+        setInitialValue(Answer.toFixed(2).toString());
+      }
+      break;
+    }
+    case '*': {
+      var Answer = parseFloat(initialValue) * parseFloat(secondValue);
+      var FloatNum = Answer.toString().split('.')[1];
+      if (FloatNum == undefined) {
+        setInitialValue(Answer.toString());
+      } else {
+        setInitialValue(Answer.toFixed(2).toString());
+      }
+      break;
+    }
+    case '/': {
+      var Answer = parseFloat(initialValue) / parseFloat(secondValue);
+      var FloatNum = Answer.toString().split('.')[1];
+      if (FloatNum == undefined) {
+        setInitialValue(Answer.toString());
+      } else {
+        setInitialValue(Answer.toFixed(2).toString());
+      }
+      break;
+    }
+
+
+}
 
     setSecondValue('0');
     setOperator(undefined);
@@ -105,13 +107,13 @@ const App = () => {
   const ACFunction = () => {
     if (secondValue !== "0") {
       setSecondValue('0');
-
+setBtnFocus(undefined)
     }
     else {
       setInitialValue('0');
       setSecondValue('0');
       setOperator(undefined);
-
+setBtnFocus(undefined)
     }
   };
 
@@ -141,8 +143,8 @@ const App = () => {
           style={styles.textInput}
           value={
             secondValue !== '0'
-              ? secondValue.toString()
-              : initialValue.toString()
+              ? secondValue
+              : initialValue
           }
           cursorColor={'orange'}
           editable={false}
@@ -170,10 +172,14 @@ const App = () => {
 
         <CustomBtn
           Title={"/"}
-          color={"white"}
-          buttonBgColor="#FFA500"
-          onPress={() =>
-            handleOperator('/')}
+          color={btnFocus==1?"#FFa500" :"white"}
+          buttonBgColor={btnFocus==1? "white" : "#FFA500"}
+          onPress={() =>{
+            handleOperator('/')
+            setBtnFocus(1)
+
+          }
+            }
         />
         <CustomBtn
           color={"white"}
@@ -195,11 +201,13 @@ const App = () => {
 
         <CustomBtn
           Title={"x"}
-          color={"white"}
-          buttonBgColor="#FFA500"
-          onPress={
-            () => handleOperator('*')
-          }
+          color={btnFocus==2?"#FFa500" :"white"}
+          buttonBgColor={btnFocus==2? "white" : "#FFA500"}
+         onPress={
+            () =>{
+              handleOperator('*')
+          setBtnFocus(2)
+            } }
         />
         <CustomBtn
           color={"white"}
@@ -221,10 +229,11 @@ const App = () => {
 
         <CustomBtn
           Title={"-"}
-          color={"white"}
-          buttonBgColor="#FFA500"
-          onPress={
-            () => handleOperator('-')
+          color={btnFocus==3?"#FFa500" :"white"}
+          buttonBgColor={btnFocus==3? "white" : "#FFA500"}
+         onPress={
+            () => {handleOperator('-')
+          setBtnFocus(3)}
           }
         />
         <CustomBtn
@@ -247,10 +256,12 @@ const App = () => {
 
         <CustomBtn
           Title={"+"}
-          color={"white"}
-          buttonBgColor="#FFA500"
+          color={btnFocus==4?"#FFa500" :"white"}
+          buttonBgColor={btnFocus==4? "white" : "#FFA500"}
           onPress={
-            () => handleOperator('+')
+            () => {handleOperator('+')
+          setBtnFocus(4)
+          }
           }
         />
         <CustomBtn
@@ -268,10 +279,14 @@ const App = () => {
 
         <CustomBtn
           Title={"="}
-          color={"white"}
-          buttonBgColor="#FFA500"
-          onPress={
-            handleAnswer}
+          color={btnFocus==5?"#FFa500" :"white"}
+          buttonBgColor={btnFocus==5? "white" : "#FFA500"}
+            onPress={() => {
+              handleAnswer()
+              setBtnFocus(5)
+
+            }
+          }
         />
       </View>
     </SafeAreaView>
