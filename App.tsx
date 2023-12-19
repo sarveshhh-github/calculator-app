@@ -4,7 +4,7 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CustomBtn from './CustomBtn';
 
 const App = () => {
@@ -74,23 +74,54 @@ const App = () => {
   };
 
 
-  const handlePressNumbers = (digit: any) => {
-    if (operator === undefined) {
-      initialValue == '0'
-        ? setInitialValue(digit)
-        : digit == '.'
-          ? setInitialValue(initialValue + '.')
-          : setInitialValue(initialValue + digit);
-    } else {
-      secondValue == '0'
-        ? setSecondValue(digit)
-        : digit == '.'
-          ? setSecondValue(secondValue + '.')
-          : setSecondValue(secondValue + digit);
-      // : setSecondValue(initialValue * 10 + digit);
-    }
-  };
+  // const handlePressNumbers = (digit: any) => {
+  //   if (operator === undefined) {
+  //     initialValue == '0' ?
+  //       setInitialValue(digit)
+  //       :
+  //       digit == '.'
+  //         ? setInitialValue(initialValue + '.')
+  //         : setInitialValue(initialValue + digit)
 
+  //   } else {
+  //     secondValue == '0'
+  //       ? setSecondValue(digit)
+  //       : digit == '.'
+  //         ? setSecondValue(secondValue + '.')
+  //         : setSecondValue(secondValue + digit);
+  //     // : setSecondValue(initialValue * 10 + digit);
+  //   }
+  // };
+
+  const handlePressNumbers =(digit:any) => {
+if (operator == undefined) {
+//for initial value
+if (initialValue == "0" && digit == ".") {
+setInitialValue(initialValue + ".")
+}
+else if(initialValue =="0" && digit != ".") {
+setInitialValue(digit)
+}
+else {
+  setInitialValue(initialValue + digit)
+}
+
+}
+else{
+//for second value
+
+if (secondValue == "0" && digit == ".") {
+  setSecondValue(secondValue + ".")
+  }
+  else if(secondValue =="0" && digit != ".") {
+  setSecondValue(digit)
+  }
+  else {
+    setSecondValue(secondValue + digit)
+  }
+
+}
+  }
   const clearValue = () => {
 
     if (secondValue !== "0") {
