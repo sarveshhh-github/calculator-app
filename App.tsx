@@ -93,34 +93,43 @@ const App = () => {
   //   }
   // };
 
-  const handlePressNumbers =(digit:any) => {
-if (operator == undefined) {
-//for initial value
-if (initialValue == "0" && digit == ".") {
-setInitialValue(initialValue + ".")
-}
-else if(initialValue =="0" && digit != ".") {
-setInitialValue(digit)
-}
-else {
-  setInitialValue(initialValue + digit)
-}
+  const handlePressNumbers = (digit: any) => {
+    if (operator == undefined) {
+      //for initial value
+      if (initialValue && digit == ".") {
+        if (initialValue.includes(".")) {
+          setInitialValue(initialValue)
+        }
+        else {
+          setInitialValue(initialValue+ '.')
+        }
+      }
+      else if (initialValue == "0" && digit != ".") {
+        setInitialValue(digit)
+      }
+      else {
+        setInitialValue(initialValue + digit)
+      }
 
-}
-else{
-//for second value
+    }
+    else {
+      //for second value
+      if (secondValue && digit == ".") {
+        if (secondValue.includes(".")) {
+          setSecondValue(secondValue)
+        }
+        else {
+          setSecondValue(secondValue + '.')
+        }
+      }
+      else if (secondValue == "0" && digit != ".") {
+        setSecondValue(digit)
+      }
+      else {
+        setSecondValue(secondValue + digit)
+      }
 
-if (secondValue == "0" && digit == ".") {
-  setSecondValue(secondValue + ".")
-  }
-  else if(secondValue =="0" && digit != ".") {
-  setSecondValue(digit)
-  }
-  else {
-    setSecondValue(secondValue + digit)
-  }
-
-}
+    }
   }
   const clearValue = () => {
 
@@ -297,7 +306,10 @@ if (secondValue == "0" && digit == ".") {
           color={"white"}
           Title={"."}
           buttonBgColor={"#333333"}
-          onPress={() => handlePressNumbers('.')} />
+          onPress={() => {
+            handlePressNumbers(".")
+          }}
+        />
 
         <CustomBtn
           Title={"="}
